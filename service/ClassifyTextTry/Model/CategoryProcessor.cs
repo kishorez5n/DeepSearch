@@ -12,12 +12,34 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using Grpc.Auth;
+using ClassifyTextTry.Model.Data;
 
 namespace ClassifyTextTry.Model
 {
-    public static class CategoryProcessor
+    public class CategoryProcessor
     {
-        public static string Get(string toClassify)
+        private LanguageServiceClient serviceClient;
+
+        private GraphProcessor graphProcessor;
+
+        public static CategoryProcessor GetInstance()
+        {
+            CategoryProcessor categoryProcessor = new CategoryProcessor();
+
+            var credential = GoogleCredential.FromFile("Config\\classifyNlp.json")
+                .CreateScoped(LanguageServiceClient.DefaultScopes);
+            var channel = new Grpc.Core.Channel(
+                                    LanguageServiceClient.DefaultEndpoint.ToString(),
+                                    credential.ToChannelCredentials());
+
+            categoryProcessor.serviceClient = LanguageServiceClient.Create(channel);
+
+            categoryProcessor.graphProcessor = GraphProcessor.GetInstance();
+
+            return categoryProcessor;
+        }
+
+        public string GetF(string toClassify)
         {
             /*
              var credential = GoogleCredential.FromFile("C:\\work_perso\\gcp\\classifyNlp.json")
@@ -41,9 +63,40 @@ namespace ClassifyTextTry.Model
             return cat.ToString();
         }
 
+        public string Get(string toClassify)
+        {
+            var response = this.serviceClient.ClassifyText(new Document()
+            {
+                Content = toClassify,
+                Type = Document.Types.Type.PlainText
+            });
+            var cat = response.Categories;
+            Console.WriteLine($"Categories: {cat}");
 
+            var k = cat[0].Name.Split(new string[] { "/" }, StringSplitOptions.None);
 
-        private static async Task Run()
+            return cat.ToString();
+        }
+
+        public string ClassifyData(LinkData toClassify)
+        {
+            var response = this.serviceClient.ClassifyText(new Document()
+            {
+                Content = toClassify.Text,
+                Type = Document.Types.Type.PlainText
+            });
+            var categories = response.Categories;
+            Console.WriteLine($"Categories: {categories}");
+
+            foreach(var category in categories)
+            {
+                this.graphProcessor.AddToGraph(category.Name, toClassify.Link);
+            }
+
+            return categories.ToString();
+        }
+
+        private async Task Run()
         {
             // Create the service.
             var service = new DiscoveryService(new BaseClientService.Initializer
@@ -67,7 +120,7 @@ namespace ClassifyTextTry.Model
         }
 
 
-        private static async Task<string> SendRequest(string textContent)
+        private async Task<string> SendRequest(string textContent)
         {
 
             var docContent = new Document()

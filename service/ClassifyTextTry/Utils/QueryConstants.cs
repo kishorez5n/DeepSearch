@@ -17,6 +17,15 @@ namespace ClassifyTextTry.Utils
         public const string AllSubCategoryLinks1 = "g.V('{0}').out('link')";
         public const string AllSubCategoryLinks2 = "g.V('{0}')out('subcatgetory').out('link')";
 
+
+        public const string AddVertexCategory = "g.addV('category').property('id', '{0}')";
+        public const string AddVertexSubcategory = "g.addV('category2').property('id', '{0}')";
+        public const string AddVertexLinkdata = "g.addV('linkdata').property('id', '{0}').property('data', '{1}')";
+        public const string AddEdgeCategoryToSubcategory = "g.V('{0}').addE('subcatgetory').to(g.V('{1}'))";
+        public const string AddEdgeSubOrCategoryToLinkdata = "g.V('{0}').addE('link').to(g.V('{1}'))";
+
+        public const string GetVertex = "g.V('{0}')";
+
         /* Example
          * 
         private const string AllCategory = "g.V().hasLabel('category')";

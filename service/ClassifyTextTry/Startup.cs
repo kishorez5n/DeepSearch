@@ -24,21 +24,27 @@ namespace ClassifyTextTry
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://www.contoso.com",
+                                        "https://localhost:4200");
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<GraphQuery>(GraphQuery.GetInstance());
-            /*
-            var builder = new ContainerBuilder();
-            builder.RegisterType<GraphController>();
-            var container = builder.Build();
-            app.UseAutofacMiddleware(container);
-
-            services.
-            */
+            services.AddSingleton<GraphProcessor>(GraphProcessor.GetInstance());
+            services.AddSingleton<CategoryProcessor>(CategoryProcessor.GetInstance());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,18 +59,9 @@ namespace ClassifyTextTry
                 app.UseHsts();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseMvc();
-
-            /*
-            var builder = new ContainerBuilder();
-
-            var graphQuery = GraphQuery.GetInstance();
-            builder.RegisterInstance(graphQuery).As<GraphQuery>();
-
-            var container = builder.Build();
-            app.ApplicationServices = new AutofacServiceProvider(container);
-            */
         }
     }
 }
