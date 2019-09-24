@@ -1,0 +1,7 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/cbc15b71-d224-4f74-bcfc-e126dc50d897/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/DeepSearchDemo",
+    "appService.deploySubpath": "",
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ]
+}

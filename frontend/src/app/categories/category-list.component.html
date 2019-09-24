@@ -1,0 +1,16 @@
+
+  <div class='card-grid'>
+    <ul class='card-list' *ngIf='categories && categories.length'>
+        <li *ngFor='let category of filteredCategories'>
+            <div class="card">
+                <div class="card-body">
+                    <div class="container-fluid">
+                      <h1><a class='nav-link' routerLinkActive='active' [routerLink]="['/categories', category.id]">
+                        {{ category.id }}</a></h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+  

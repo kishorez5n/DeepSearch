@@ -1,0 +1,38 @@
+[
+    {
+      "id": "Travel",
+      "link": "https://www.google.com",
+      "label": "category",
+      "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "link": "https://www.google.com",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "link": "https://www.google.com",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "link": "https://www.google.com",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "link": "https://www.google.com",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "link": "https://www.google.com",
+        "label": "category",
+        "type": "vertex"
+    }
+]

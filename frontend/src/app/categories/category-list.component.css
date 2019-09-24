@@ -1,0 +1,32 @@
+.card-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    text-align: center;
+    padding: 2% 10% 2% 10%;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.card-body {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.card-body:hover {
+    cursor: pointer;
+}
+
+.link-list {
+    overflow: auto;
+    margin: 0 10% 2% 10%;
+}
+
+table tr:first-child td {
+    border-top-width: 0px;
+}

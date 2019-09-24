@@ -1,0 +1,22 @@
+[
+    {
+      "id": "Travel",
+      "label": "category",
+      "type": "vertex"
+    },
+    {
+        "id": "Art",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Trip",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Entertainment",
+        "label": "category",
+        "type": "vertex"
+    }
+]

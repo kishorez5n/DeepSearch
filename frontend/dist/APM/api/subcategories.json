@@ -1,0 +1,26 @@
+[
+    {
+      "id": "Travel",
+      "name": "New Zealand",
+      "label": "category",
+      "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "name": "IceLand",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "name": "ThaiLand",
+        "label": "category",
+        "type": "vertex"
+    },
+    {
+        "id": "Travel",
+        "name": "Hawaii",
+        "label": "category",
+        "type": "vertex"
+    }
+]

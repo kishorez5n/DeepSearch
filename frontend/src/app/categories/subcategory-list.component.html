@@ -1,0 +1,30 @@
+<div class='page-header'>
+    <label class="page-title">{{ pageTitle }}</label>
+</div>
+<div class='card-grid'>
+    <ul class='card-list' *ngIf='subcategories && subcategories.length'>
+        <li *ngFor='let subcategory of subcategories'>
+            <div class="card">
+                <div class="card-body">
+                    <div class="container-fluid">
+                      <h1><a class='nav-link' routerLinkActive='active' [routerLink]="['/subcategories', subcategory.id]">
+                        {{ subcategory.id }}</a></h1>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class='link-list'>
+    <table class='table'
+        *ngIf='links && links.length'>
+    <tr *ngFor='let item of links'>
+        <td>
+          <a class='nav-link'(click)='goToLink(item.properties.data[0].value)' routerLinkActive='active' 
+          [routerLink]="[item.properties.data[0].value]">
+            {{ item.properties.data[0].value }}
+          </a>
+        </td>
+    </tr>
+    </table>
+</div>

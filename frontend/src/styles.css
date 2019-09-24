@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
+
+.table {
+  margin-top: 10px
+}
+
+body {
+  font-family:'Segoe UI','Open Sans','Helvetica Neue',sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+div.page-header {
+  background-color: #1c1c1c;
+  height: 50px;
+  
+}
+
+.back-btn {
+  color: #FFF;
+  border: none;
+  background: transparent;
+}
+
+.back-btn:hover {
+  cursor: pointer;
+}
+
+.page-title {
+  color: #FFF;
+  font-size: 1.5rem;
+  vertical-align: middle;
+  margin-bottom: 0px;
+  margin-left: 2%;
+  line-height: 50px;
+}
